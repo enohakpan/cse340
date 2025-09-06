@@ -4,3 +4,249 @@
 *:after {
   box-sizing: border-box;
 }
+
+/******* Base Styles - Mobile First ***************/
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+#wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  min-height: 100vh;
+  border: 2px solid #87CEEB;
+}
+
+/******* Header ***************/
+#top-header {
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.siteName a {
+  color: black;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#tools a {
+  color: black;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/******* Navigation ***************/
+nav {
+  background-color: #333;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+nav li {
+  padding: 1rem;
+  color: white;
+  cursor: pointer;
+}
+
+/******* Main Content ***************/
+main {
+  padding: 1rem;
+}
+
+/******* Hero Section ***************/
+.hero {
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin: 0 0 2rem 0;
+  font-weight: bold;
+}
+
+.delorean-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: left;
+}
+
+.delorean-text {
+  background-color: rgba(135, 206, 235, 0.1);
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.delorean-image {
+  text-align: center;
+}
+
+.delorean-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.delorean-text h2 {
+  color: #87CEEB;
+  font-size: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+
+.delorean-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.delorean-text li {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.own-today-btn {
+  background-color: #87CEEB;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.delorean-image img {
+  max-width: 300px;
+  height: auto;
+}
+
+/******* Content Grid - Mobile First ***************/
+.content-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  padding: 2rem;
+  grid-template-areas: 
+    "reviews"
+    "upgrades";
+}
+
+.reviews {
+  grid-area: reviews;
+}
+
+.upgrades {
+  grid-area: upgrades;
+}
+
+/******* Upgrades Section ***************/
+.upgrades h2 {
+  color: black;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.upgrade-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.upgrade-item {
+  text-align: center;
+  background-color: #87CEEB;
+  padding: 1rem;
+  border-radius: 5px;
+  color: white;
+  border: 2px solid white;
+}
+
+.upgrade-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.upgrade-item span {
+  color: #87CEEB;
+  font-weight: bold;
+  display: block;
+  text-decoration: underline;
+}
+
+/******* Reviews Section ***************/
+.reviews h2 {
+  color: black;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.reviews ul {
+  list-style: none;
+  padding: 0;
+}
+
+.reviews li {
+  color: black;
+  margin-bottom: 0.5rem;
+}
+
+/******* Footer ***************/
+footer {
+  background-color: white;
+  color: black;
+  text-align: left;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+}
+
+/******* Media Query for Larger Screens ***************/
+@media screen and (min-width: 768px) {
+  nav ul {
+    flex-wrap: nowrap;
+  }
+  
+  .delorean-feature {
+    flex-direction: row;
+  }
+  
+  .delorean-text {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  
+  .delorean-image {
+    text-align: right;
+  }
+  
+  .delorean-image img {
+    max-width: 300px;
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "upgrades reviews";
+  }
+}
