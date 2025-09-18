@@ -62,8 +62,17 @@ nav ul {
 
 nav li {
   padding: 1rem;
-  color: white;
   cursor: pointer;
+}
+
+nav li a {
+  color: #87CEEB;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav li a:hover {
+  color: white;
 }
 
 /******* Main Content ***************/
@@ -115,6 +124,7 @@ main {
 .delorean-text ul {
   list-style: none;
   padding: 0;
+  color: #f5f5f5;
   margin: 0 0 1rem 0;
 }
 
@@ -134,7 +144,7 @@ main {
 }
 
 .delorean-image img {
-  max-width: 300px;
+  max-width: 500px;
   height: auto;
 }
 
@@ -220,6 +230,71 @@ footer {
   margin-top: 2rem;
 }
 
+/******* Inventory Display ***************/
+#inv-display {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+#inv-display li {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#inv-display img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+#inv-display .namePrice {
+  margin-top: 0.5rem;
+}
+
+#inv-display .namePrice hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 0.5rem 0;
+}
+
+#inv-display .namePrice h2 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+#inv-display .namePrice h2 a {
+  color: #333;
+  text-decoration: none;
+}
+
+#inv-display .namePrice h2 a:hover {
+  color: #87CEEB;
+}
+
+#inv-display .namePrice span {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #87CEEB;
+}
+
+.notice {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-style: italic;
+}
+
 /******* Media Query for Larger Screens ***************/
 @media screen and (min-width: 768px) {
   nav ul {
@@ -241,12 +316,16 @@ footer {
   }
   
   .delorean-image img {
-    max-width: 300px;
+    max-width: 500px;
   }
   
   .content-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
       "upgrades reviews";
+  }
+  
+  #inv-display {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }
