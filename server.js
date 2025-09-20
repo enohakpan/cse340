@@ -12,6 +12,7 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const db = require("./database/")
 
 
 /* ***********************
@@ -40,6 +41,20 @@ const host = process.env.HOST || '0.0.0.0'
 /* ***********************
  * Log statement to confirm server operation
  *************************/
-app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`)
+app.listen(port, async () => {
+  console.log(`🚀 App listening on ${host}:${port}`)
+  
+  // Test database connection on startup
+  console.log('🔍 Testing database connection...')
+  try {
+    const dbConnected = await db.testConnection()
+    if (dbConnected) {
+      console.log('✅ Database connection verified successfully')
+    } else {
+      console.log('⚠️ Database connection failed - app will run with limited functionality')
+    }
+  } catch (error) {
+    console.log('⚠️ Database connection test failed:', error.message)
+    console.log('⚠️ App will run with limited functionality')
+  }
 })
