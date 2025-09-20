@@ -76,4 +76,56 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the vehicle detail view HTML
+* ************************************ */
+Util.buildVehicleDetail = async function(vehicle){
+  let detailHTML
+  if(vehicle){
+    // Format price with currency symbol and commas
+    const formattedPrice = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(vehicle.inv_price)
+    
+    // Format mileage with commas
+    const formattedMiles = new Intl.NumberFormat('en-US').format(vehicle.inv_miles)
+    
+    detailHTML = `
+      <div class="vehicle-detail">
+        <div class="vehicle-image">
+          <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors" />
+        </div>
+        <div class="vehicle-info">
+          <h2 class="vehicle-title">${vehicle.inv_make} ${vehicle.inv_model}</h2>
+          <div class="vehicle-specs">
+            <div class="spec-item">
+              <strong>Year:</strong> ${vehicle.inv_year}
+            </div>
+            <div class="spec-item">
+              <strong>Price:</strong> ${formattedPrice}
+            </div>
+            <div class="spec-item">
+              <strong>Mileage:</strong> ${formattedMiles} miles
+            </div>
+            <div class="spec-item">
+              <strong>Color:</strong> ${vehicle.inv_color}
+            </div>
+            <div class="spec-item">
+              <strong>Classification:</strong> ${vehicle.classification_name}
+            </div>
+          </div>
+          <div class="vehicle-description">
+            <h3>Vehicle Description</h3>
+            <p>${vehicle.inv_description}</p>
+          </div>
+        </div>
+      </div>
+    `
+  } else {
+    detailHTML = '<p class="notice">Sorry, the requested vehicle could not be found.</p>'
+  }
+  return detailHTML
+}
+
 module.exports = Util

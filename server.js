@@ -13,6 +13,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const db = require("./database/")
+const errorHandler = require("./middleware/errorHandler")
 
 
 /* ***********************
@@ -30,6 +31,16 @@ app.use(static)
 app.get("/", baseController.buildHome)
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+/* ***********************
+ * Error Handling Middleware
+ * Must be after all routes
+ *************************/
+// 404 handler for unmatched routes
+app.use(errorHandler.handleNotFound)
+
+// Global error handler
+app.use(errorHandler.handleErrors)
 
 /* ***********************
  * Local Server Information

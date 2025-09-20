@@ -1,0 +1,51 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } %>
+
+<div class="error-container">
+  <div class="error-content">
+    <div class="error-icon">
+      <% if (status === 404) { %>
+        <h2 class="error-number">404</h2>
+        <p class="error-symbol">🔍</p>
+      <% } else if (status === 500) { %>
+        <h2 class="error-number">500</h2>
+        <p class="error-symbol">⚠️</p>
+      <% } else { %>
+        <h2 class="error-number"><%= status %></h2>
+        <p class="error-symbol">❌</p>
+      <% } %>
+    </div>
+    
+    <div class="error-message">
+      <h3><%= message %></h3>
+      
+      <% if (status === 404) { %>
+        <p>The page you're looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+        <div class="error-actions">
+          <a href="/" class="btn btn-primary">Go Home</a>
+          <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+        </div>
+      <% } else if (status === 500) { %>
+        <p>We're experiencing some technical difficulties. Please try again in a few moments.</p>
+        <div class="error-actions">
+          <a href="/" class="btn btn-primary">Go Home</a>
+          <a href="javascript:location.reload()" class="btn btn-secondary">Try Again</a>
+        </div>
+      <% } else { %>
+        <p>An unexpected error occurred. Please try again later.</p>
+        <div class="error-actions">
+          <a href="/" class="btn btn-primary">Go Home</a>
+          <a href="javascript:history.back()" class="btn btn-secondary">Go Back</a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  
+  <% if (error && error.stack) { %>
+    <details class="error-details">
+      <summary>Technical Details (Development Mode)</summary>
+      <pre class="error-stack"><%= error.stack %></pre>
+    </details>
+  <% } %>
+</div>
