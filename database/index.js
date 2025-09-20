@@ -12,6 +12,8 @@ require("dotenv").config();
 if (!process.env.DATABASE_URL) {
   console.error("❌ DATABASE_URL environment variable is not set!");
   console.error("Please set DATABASE_URL in your .env file or Render environment variables.");
+} else {
+  console.log("🔍 DATABASE_URL is set to:", process.env.DATABASE_URL.replace(/\/\/.*@/, '//***:***@')); // Hide credentials
 }
 
 const pool = new Pool({
