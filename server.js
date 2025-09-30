@@ -21,7 +21,10 @@ const errorHandler = require("./middleware/errorHandler")
 /* ***********************
  * Middleware
  * ************************/
- app.use(session({
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+
+app.use(session({
   store: new (require('connect-pg-simple')(session))({
     createTableIfMissing: true,
     pool,
@@ -31,6 +34,13 @@ const errorHandler = require("./middleware/errorHandler")
   saveUninitialized: true,
   name: 'sessionId',
 }))
+
+// Express Messages Middleware
+app.use(require('connect-flash')())
+app.use(function(req, res, next){
+  res.locals.messages = require('express-messages')(req, res)
+  next()
+})
 
 
 /* ***********************

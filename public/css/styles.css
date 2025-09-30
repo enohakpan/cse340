@@ -574,6 +574,136 @@ footer {
   word-break: break-all;
 }
 
+/******* Form Styles ***************/
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+  border: 2px solid #87CEEB;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 0;
+}
+
+legend {
+  background-color: #87CEEB;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+label {
+  display: block;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #87CEEB;
+  box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.1);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+input[type="submit"] {
+  background-color: #87CEEB;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #5fb3d3;
+}
+
+.notice {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+  border: 1px solid #f5c6cb;
+}
+
+.notice ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.notice li {
+  margin-bottom: 0.5rem;
+}
+
+/******* Management Page ***************/
+.management-links {
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.management-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.management-links li {
+  margin-bottom: 1rem;
+}
+
+.management-links a {
+  display: block;
+  padding: 1rem;
+  background-color: #87CEEB;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.management-links a:hover {
+  background-color: #5fb3d3;
+}
+
 /******* Media Query for Error Pages ***************/
 @media screen and (min-width: 768px) {
   .error-content {

@@ -1,0 +1,138 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } else {res.redirect('/')} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<form action="/inv/add-inventory" method="post">
+  <fieldset>
+    <legend>Add Vehicle</legend>
+    
+    <label for="classificationList">Classification:</label>
+    <%- classificationList %>
+    
+    <label for="invMake">Make:</label>
+    <input type="text" id="invMake" name="inv_make" 
+           value="<%= locals.inv_make %>" required minlength="3">
+    
+    <label for="invModel">Model:</label>
+    <input type="text" id="invModel" name="inv_model" 
+           value="<%= locals.inv_model %>" required minlength="3">
+    
+    <label for="invDescription">Description:</label>
+    <textarea id="invDescription" name="inv_description" required><%= locals.inv_description %></textarea>
+    
+    <label for="invImage">Image Path:</label>
+    <input type="text" id="invImage" name="inv_image" 
+           value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>" required>
+    
+    <label for="invThumbnail">Thumbnail Path:</label>
+    <input type="text" id="invThumbnail" name="inv_thumbnail" 
+           value="<%= locals.inv_thumbnail || '/images/vehicles/no-image-tn.png' %>" required>
+    
+    <label for="invPrice">Price:</label>
+    <input type="number" id="invPrice" name="inv_price" 
+           value="<%= locals.inv_price %>" required min="0" step="0.01">
+    
+    <label for="invYear">Year:</label>
+    <input type="number" id="invYear" name="inv_year" 
+           value="<%= locals.inv_year %>" required min="1900" max="<%= new Date().getFullYear() + 1 %>">
+    
+    <label for="invMiles">Miles:</label>
+    <input type="number" id="invMiles" name="inv_miles" 
+           value="<%= locals.inv_miles %>" required min="0">
+    
+    <label for="invColor">Color:</label>
+    <input type="text" id="invColor" name="inv_color" 
+           value="<%= locals.inv_color %>" required>
+    
+    <input type="submit" value="Add Vehicle">
+  </fieldset>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('form');
+  
+  form.addEventListener('submit', function(e) {
+    const classification = document.getElementById('classificationList').value;
+    const make = document.getElementById('invMake').value.trim();
+    const model = document.getElementById('invModel').value.trim();
+    const description = document.getElementById('invDescription').value.trim();
+    const image = document.getElementById('invImage').value.trim();
+    const thumbnail = document.getElementById('invThumbnail').value.trim();
+    const price = document.getElementById('invPrice').value;
+    const year = document.getElementById('invYear').value;
+    const miles = document.getElementById('invMiles').value;
+    const color = document.getElementById('invColor').value.trim();
+    
+    if (!classification) {
+      e.preventDefault();
+      alert('Please select a classification.');
+      return;
+    }
+    
+    if (make.length < 3) {
+      e.preventDefault();
+      alert('Make must be at least 3 characters.');
+      return;
+    }
+    
+    if (model.length < 3) {
+      e.preventDefault();
+      alert('Model must be at least 3 characters.');
+      return;
+    }
+    
+    if (!description) {
+      e.preventDefault();
+      alert('Description is required.');
+      return;
+    }
+    
+    if (!image) {
+      e.preventDefault();
+      alert('Image path is required.');
+      return;
+    }
+    
+    if (!thumbnail) {
+      e.preventDefault();
+      alert('Thumbnail path is required.');
+      return;
+    }
+    
+    if (!price || price < 0) {
+      e.preventDefault();
+      alert('Price must be a positive number.');
+      return;
+    }
+    
+    if (!year || year < 1900 || year > new Date().getFullYear() + 1) {
+      e.preventDefault();
+      alert('Year must be between 1900 and next year.');
+      return;
+    }
+    
+    if (!miles || miles < 0) {
+      e.preventDefault();
+      alert('Miles must be a positive number.');
+      return;
+    }
+    
+    if (!color) {
+      e.preventDefault();
+      alert('Color is required.');
+      return;
+    }
+  });
+});
+</script>
