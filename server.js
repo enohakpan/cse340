@@ -16,6 +16,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
+const utilities = require("./utilities/")
 const db = require("./database/")
 const errorHandler = require("./middleware/errorHandler")
 
@@ -44,6 +45,9 @@ app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+
+// JWT Token Middleware
+app.use(utilities.checkJWTToken)
 
 
 /* ***********************
