@@ -2,6 +2,7 @@
 const express = require("express")
 const router = new express.Router() 
 const invController = require("../controllers/invController")
+const utilities = require("../utilities/")
 const validate = require("../middleware/validation")
 
 // Route to build inventory by classification view
@@ -30,6 +31,19 @@ router.post("/add-inventory",
   validate.inventoryRules(),
   validate.checkInventoryData,
   invController.addInventory
+);
+
+// Route to get inventory by classification as JSON
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
+// Route to build edit inventory view
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryView));
+
+// Route to update inventory
+router.post("/update/", 
+  validate.inventoryRules(),
+  validate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
 );
 
 module.exports = router;
