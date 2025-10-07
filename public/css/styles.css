@@ -704,6 +704,170 @@ input[type="submit"]:hover {
   background-color: #5fb3d3;
 }
 
+/******* Login Form ***************/
+.login-form {
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.login-form fieldset {
+  border: 2px solid #87CEEB;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.login-form legend {
+  background-color: #87CEEB;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.login-form label {
+  display: block;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.login-form input[type="email"]:focus,
+.login-form input[type="password"]:focus {
+  outline: none;
+  border-color: #87CEEB;
+}
+
+.login-btn {
+  background-color: #87CEEB;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.login-btn:hover {
+  background-color: #5fb3d3;
+}
+
+/******* Registration Form ***************/
+.registration-form {
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.registration-form fieldset {
+  border: 2px solid #87CEEB;
+  border-radius: 8px;
+  padding: 2rem;
+}
+
+.registration-form legend {
+  background-color: #87CEEB;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.registration-form label {
+  display: block;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: bold;
+  color: #333;
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.registration-form input[type="text"]:focus,
+.registration-form input[type="email"]:focus,
+.registration-form input[type="password"]:focus {
+  outline: none;
+  border-color: #87CEEB;
+}
+
+.password-requirements {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-left: 3px solid #87CEEB;
+  border-radius: 3px;
+}
+
+/******* HTML5 Form Validation Styles ***************/
+input:required:invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+}
+
+input:required:valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+}
+
+input:focus:invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
+}
+
+input:focus:valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
+}
+
+.register-btn {
+  background-color: #87CEEB;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.register-btn:hover {
+  background-color: #5fb3d3;
+}
+
+/******* Login Form Password Requirements ***************/
+.login-form .password-requirements {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-left: 3px solid #87CEEB;
+  border-radius: 3px;
+}
+
 /******* Media Query for Error Pages ***************/
 @media screen and (min-width: 768px) {
   .error-content {
