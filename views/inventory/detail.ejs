@@ -4,6 +4,49 @@
   res.redirect('/')
 } %>
 
-<%# messages() %>
+<%- messages() %>
 
 <%- detailHTML %>
+
+<!-- Reviews Section -->
+<div class="reviews-section">
+  <h2>Customer Reviews</h2>
+  
+  <% if (locals.loggedin) { %>
+    <p><a href="/reviews/add/<%= locals.inv_id %>">Write a Review</a></p>
+  <% } else { %>
+    <p><a href="/account/login">Login to write a review</a></p>
+  <% } %>
+  
+  <% if (locals.averageRating && locals.averageRating.review_count > 0) { %>
+    <div class="rating-summary">
+      <p><strong>Average Rating:</strong> 
+        <% for(let i = 1; i <= 5; i++) { %>
+          <%= i <= Math.round(locals.averageRating.avg_rating) ? '⭐' : '☆' %>
+        <% } %>
+        (<%= locals.averageRating.avg_rating %>/5 from <%= locals.averageRating.review_count %> reviews)
+      </p>
+    </div>
+  <% } %>
+  
+  <% if (locals.reviews && locals.reviews.length > 0) { %>
+    <div class="reviews-list">
+      <% locals.reviews.forEach(review => { %>
+        <div class="review">
+          <div class="review-header">
+            <strong><%= review.review_title %></strong>
+            <span class="rating">
+              <% for(let i = 1; i <= 5; i++) { %>
+                <%= i <= review.review_rating ? '⭐' : '☆' %>
+              <% } %>
+            </span>
+          </div>
+          <p class="review-text"><%= review.review_text %></p>
+          <p class="review-author">By <%= review.account_firstname %> <%= review.account_lastname %> on <%= new Date(review.review_date).toLocaleDateString() %></p>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>No reviews yet. Be the first to review this vehicle!</p>
+  <% } %>
+</div>

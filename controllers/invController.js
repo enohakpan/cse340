@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const reviewModel = require("../models/review-model")
 const utilities = require("../utilities/")
 
 const invCont = {}
@@ -35,10 +36,17 @@ invCont.buildByInvId = async function (req, res, next) {
     let nav = await utilities.getNav()
     
     if (data) {
+      // Get reviews and rating for this vehicle
+      const reviews = await reviewModel.getReviewsByInvId(inv_id)
+      const averageRating = await reviewModel.getAverageRating(inv_id)
+      
       res.render("./inventory/detail", {
         title: data.inv_make + " " + data.inv_model,
         nav,
         detailHTML,
+        inv_id,
+        reviews,
+        averageRating,
       })
     } else {
       // Vehicle not found - trigger 404 error

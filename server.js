@@ -16,6 +16,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
+const reviewRoute = require("./routes/reviewRoute")
 const utilities = require("./utilities/")
 const db = require("./database/")
 const errorHandler = require("./middleware/errorHandler")
@@ -67,6 +68,8 @@ app.get("/", baseController.buildHome)
 app.use("/inv", inventoryRoute)
 // Account routes
 app.use("/account", accountRoute)
+// Review routes
+app.use("/reviews", reviewRoute)
 
 /* ***********************
  * Error Handling Middleware
@@ -97,6 +100,11 @@ app.listen(port, async () => {
     const dbConnected = await db.testConnection()
     if (dbConnected) {
       console.log('✅ Database connection verified successfully')
+      
+      // Initialize reviews table
+      const reviewModel = require('./models/review-model')
+      await reviewModel.createReviewsTable()
+      console.log('✅ Reviews table initialized')
     } else {
       console.log('⚠️ Database connection failed - app will run with limited functionality')
     }
