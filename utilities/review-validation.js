@@ -11,13 +11,7 @@ validate.reviewRules = () => {
       .isInt({ min: 1, max: 5 })
       .withMessage("Rating must be between 1 and 5 stars."),
     
-    body("review_title")
-      .trim()
-      .escape()
-      .notEmpty()
-      .isLength({ min: 3, max: 100 })
-      .withMessage("Review title must be between 3 and 100 characters."),
-    
+
     body("review_text")
       .trim()
       .escape()
@@ -31,7 +25,7 @@ validate.reviewRules = () => {
  * Check review data and return errors or continue
  * ***************************** */
 validate.checkReviewData = async (req, res, next) => {
-  const { inv_id, review_rating, review_title, review_text } = req.body
+  const { inv_id, review_rating, review_text } = req.body
   let errors = []
   errors = validationResult(req)
   if (!errors.isEmpty()) {
@@ -46,7 +40,6 @@ validate.checkReviewData = async (req, res, next) => {
       inv_id,
       vehicleName,
       review_rating,
-      review_title,
       review_text,
     })
     return

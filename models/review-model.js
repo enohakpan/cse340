@@ -62,15 +62,16 @@ async function getAverageRating(inv_id) {
 /* ***************************
  *  Add new review
  * ************************** */
-async function addReview(inv_id, account_id, review_rating, review_title, review_text) {
+async function addReview(inv_id, account_id, review_rating, review_text) {
   try {
     const sql = `
-      INSERT INTO public.reviews (inv_id, account_id, review_rating, review_title, review_text)
-      VALUES ($1, $2, $3, $4, $5) RETURNING *
+      INSERT INTO public.reviews (inv_id, account_id, review_text, review_rating)
+      VALUES ($1, $2, $3, $4) RETURNING *
     `
-    return await pool.query(sql, [inv_id, account_id, review_rating, review_title, review_text])
+    return await pool.query(sql, [inv_id, account_id, review_text, review_rating])
   } catch (error) {
     console.error("addReview error: " + error)
+    return null
   }
 }
 

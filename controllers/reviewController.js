@@ -30,14 +30,19 @@ reviewCont.buildAddReview = async function (req, res, next) {
  * ************************** */
 reviewCont.addReview = async function (req, res) {
   let nav = await utilities.getNav()
-  const { inv_id, review_rating, review_title, review_text } = req.body
+  const { inv_id, review_rating, review_text } = req.body
+  
+  if (!res.locals.accountData) {
+    req.flash("notice", "You must be logged in to write a review.")
+    return res.redirect("/account/login")
+  }
+  
   const account_id = res.locals.accountData.account_id
 
   const addResult = await reviewModel.addReview(
     inv_id,
     account_id,
     review_rating,
-    review_title,
     review_text
   )
 
@@ -48,14 +53,13 @@ reviewCont.addReview = async function (req, res) {
     req.flash("notice", "Sorry, adding the review failed.")
     const vehicleData = await invModel.getInventoryByInvId(inv_id)
     const vehicleName = `${vehicleData.inv_make} ${vehicleData.inv_model}`
-    res.status(501).render("reviews/add-review", {
+    res.status(500).render("reviews/add-review", {
       title: `Review ${vehicleName}`,
       nav,
       errors: null,
       inv_id,
       vehicleName,
       review_rating,
-      review_title,
       review_text
     })
   }
