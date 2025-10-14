@@ -11,9 +11,9 @@
       "server": "localhost",
       "driver": "PostgreSQL",
       "name": "Render.com",
-      "database": "cse340db_2kzz",
-      "username": "cse340db_2kzz_user",
-      "connectString": "postgresql://cse340db_2kzz_user:TSFUl3d3oEDiTFFKI185pVKgApIXMAJU@dpg-d32vperuibrs73a7ecm0-a.oregon-postgres.render.com/cse340db_2kzz"
+      "database": "cse340db_j72g",
+      "username": "cse340db_j72g_user",
+      "connectString": "postgresql://cse340:wArXAfuaQXyQUFUoW3cuyR7S7a4keyOx@dpg-d3n1d495pdvs738k1eb0-a.oregon-postgres.render.com/cse340db_2vbh"
     }
   ]
 }
